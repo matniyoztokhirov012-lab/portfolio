@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokhirov Matniyoz — Digital Studio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080b12;
+      color: #f5f7ff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(8, 11, 18, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #202838;
+    }
+
+    .navbar {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #6ee7ff
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none
+    }
+
+    .nav-links a {
+      color: #cbd5e1
+    }
+
+    .nav-links a:hover {
+      color: #6ee7ff
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      border: 0;
+      color: white;
+      font-size: 28px
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 85px 20px
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid #2b3950;
+      border-radius: 999px;
+      color: #6ee7ff;
+      margin-bottom: 18px
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05
+    }
+
+    h1 span {
+      color: #6ee7ff
+    }
+
+    .hero p {
+      margin: 20px 0;
+      color: #aab5c8;
+      font-size: 18px
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid #2b3950;
+      margin-right: 8px;
+      cursor: pointer
+    }
+
+    .btn.primary {
+      background: #6ee7ff;
+      color: #061018;
+      border-color: #6ee7ff;
+      font-weight: 700
+    }
+
+    .hero-card,
+    .card,
+    .project,
+    .tool,
+    .contact-box {
+      background: #101622;
+      border: 1px solid #202b3d;
+      border-radius: 20px;
+    }
+
+    .hero-card {
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .25)
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 25px
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 14px;
+      background: #0b111c;
+      border: 1px solid #202b3d
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      color: #6ee7ff
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 35px
+    }
+
+    .title h2 {
+      font-size: 38px
+    }
+
+    .title p {
+      color: #9aa8bd
+    }
+
+    .cards,
+    .projects,
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    .card,
+    .project,
+    .tool {
+      padding: 24px
+    }
+
+    .card .icon {
+      font-size: 30px;
+      margin-bottom: 10px
+    }
+
+    .card p,
+    .project p {
+      color: #9aa8bd;
+      margin-top: 8px
+    }
+
+    .tool textarea,
+    .tool select,
+    .calculator input {
+      width: 100%;
+      padding: 13px;
+      margin: 10px 0;
+      background: #080d16;
+      color: #fff;
+      border: 1px solid #2a374c;
+      border-radius: 10px;
+      font: inherit;
+    }
+
+    .result {
+      min-height: 60px;
+      padding: 14px;
+      background: #080d16;
+      border: 1px solid #2a374c;
+      border-radius: 10px;
+      margin-top: 10px;
+      color: #dce7f7
+    }
+
+    .calculator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px
+    }
+
+    .calculator input {
+      grid-column: 1/-1;
+      text-align: right;
+      font-size: 22px
+    }
+
+    .calculator button {
+      padding: 14px;
+      border: 0;
+      border-radius: 10px;
+      background: #1a2434;
+      color: #fff;
+      cursor: pointer;
+      font-size: 17px
+    }
+
+    .calculator button:hover {
+      background: #27354b
+    }
+
+    .calculator .equal {
+      background: #6ee7ff;
+      color: #061018
+    }
+
+    .contact {
+      text-align: center
+    }
+
+    .contact-box {
+      padding: 35px;
+      max-width: 750px;
+      margin: auto
+    }
+
+    .contact-box p {
+      color: #aab5c8;
+      margin: 15px 0
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap
+    }
+
+    .contact-links a {
+      padding: 11px 16px;
+      border: 1px solid #2a374c;
+      border-radius: 10px
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #718096;
+      border-top: 1px solid #202838
+    }
+
+    @media(max-width:760px) {
+      .menu {
+        display: block
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        background: #080b12;
+        flex-direction: column;
+        padding: 18px 20px;
+        border-bottom: 1px solid #202838
+      }
+
+      .nav-links.active {
+        display: flex
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 55px
+      }
+
+      .cards,
+      .projects,
+      .tools {
+        grid-template-columns: 1fr
+      }
+
+      section {
+        padding: 65px 16px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="navbar">
+      <a class="logo" href="#home">TM<span>.</span></a>
+      <button class="menu" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="nav">
+        <li><a href="#home">Bosh sahifa</a></li>
+        <li><a href="#services">Xizmatlar</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Aloqa</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div>
+      <span class="badge">Digital Creator • IT • Design</span>
+      <h1>Tokhirov <span>Matniyoz</span></h1>
+      <p>Zamonaviy web saytlar, kreativ digital loyihalar va foydali IT vositalar yarataman.</p>
+      <a class="btn primary" href="#projects">Loyihalarni ko‘rish</a>
+      <a class="btn" href="#contact">Bog‘lanish</a>
+
+      <div class="stats">
+        <div class="stat"><strong>24/7</strong>Ideas</div>
+        <div class="stat"><strong>∞</strong>Possibilities</div>
+        <div class="stat"><strong>100%</strong>Creative</div>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h2>🚀 Creative Digital</h2>
+      <p style="color:#9aa8bd;margin-top:10px">
+        G‘oyalarni zamonaviy va ishlaydigan raqamli loyihalarga aylantirish.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="title">
+      <h2>Xizmatlar</h2>
+      <p>Digital loyihalar uchun zamonaviy xizmatlar</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Web Development</h3>
+        <p>Tezkor, zamonaviy va responsive web saytlar yaratish.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>UI / UX Design</h3>
+        <p>Chiroyli, premium va foydalanuvchiga qulay interfeyslar.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💡</div>
+        <h3>Creative Ideas</h3>
+        <p>Oddiy g‘oyalarni kreativ digital loyihalarga aylantirish.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <div class="title">
+      <h2>Digital Tools</h2>
+      <p>Sayt ichida ishlaydigan foydali vositalar</p>
+    </div>
+
+    <div class="tools">
+      <div class="tool">
+        <h3>🌐 Translator</h3>
+
+        <textarea id="translateText" rows="5" placeholder="Matn yozing..."></textarea>
+
+        <select id="langPair">
+          <option value="uz|en">Uzbek → English</option>
+          <option value="en|uz">English → Uzbek</option>
+          <option value="uz|ru">Uzbek → Russian</option>
+          <option value="ru|uz">Russian → Uzbek</option>
+          <option value="en|ru">English → Russian</option>
+          <option value="ru|en">Russian → English</option>
+        </select>
+
+        <button class="btn primary" onclick="translateText()">Tarjima</button>
+
+        <div class="result" id="translationResult">Natija shu yerda chiqadi.</div>
+      </div>
+
+      <div class="tool">
+        <h3>🧮 Calculator</h3>
+
+        <div class="calculator">
+          <input id="calcDisplay" readonly>
+
+          <button onclick="clearCalc()">C</button>
+          <button onclick="addCalc('/')">÷</button>
+          <button onclick="addCalc('*')">×</button>
+          <button onclick="addCalc('-')">−</button>
+
+          <button onclick="addCalc('7')">7</button>
+          <button onclick="addCalc('8')">8</button>
+          <button onclick="addCalc('9')">9</button>
+          <button onclick="addCalc('+')">+</button>
+
+          <button onclick="addCalc('4')">4</button>
+          <button onclick="addCalc('5')">5</button>
+          <button onclick="addCalc('6')">6</button>
+          <button class="equal" onclick="calculate()">=</button>
+
+          <button onclick="addCalc('1')">1</button>
+          <button onclick="addCalc('2')">2</button>
+          <button onclick="addCalc('3')">3</button>
+          <button onclick="addCalc('.')">.</button>
+
+          <button onclick="addCalc('0')">0</button>
+        </div>
+      </div>
+
+      <div class="tool">
+        <h3>⚡ Quick Tool</h3>
+        <p style="color:#9aa8bd;margin-top:10px">
+          Ushbu portfolio ichida translator va calculator kabi foydali vositalardan foydalanishingiz mumkin.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="title">
+      <h2>Projects</h2>
+      <p>Creative digital loyihalar</p>
+    </div>
+
+    <div class="projects">
+      <div class="project">
+        <h3>AI Assistant</h3>
+        <p>Smart digital assistant</p>
+      </div>
+
+      <div class="project">
+        <h3>Beauty Studio</h3>
+        <p>Modern cosmetic website</p>
+      </div>
+
+      <div class="project">
+        <h3>Portfolio</h3>
+        <p>Personal digital portfolio</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="contact-box">
+      <h2>Bog‘lanamiz 🚀</h2>
+      <p>
+        Yangi loyiha yoki web sayt kerak bo‘lsa,
+        bog‘lanishingiz mumkin.
+      </p>
+
+      <div class="contact-links">
+        <a href="tel:+998952490943">☎ +998 95 249 09 43</a>
+        <a href="https:matniyoz_23" target="_blank">Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Tokhirov Matniyoz — Digital Studio
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("active");
+    }
+
+    let calc = "";
+
+    function addCalc(value) {
+      calc += value;
+      document.getElementById("calcDisplay").value = calc;
+    }
+
+    function clearCalc() {
+      calc = "";
+      document.getElementById("calcDisplay").value = "";
+    }
+
+    function calculate() {
+      try {
+        if (!calc) return;
+
+        // Faqat oddiy matematik belgilarni qabul qiladi.
+        if (!/^[0-9+\-*/.() ]+$/.test(calc)) {
+          throw new Error("Invalid expression");
+        }
+
+        let result = Function('"use strict"; return (' + calc + ')')();
+        calc = String(result);
+        document.getElementById("calcDisplay").value = calc;
+      } catch (error) {
+        document.getElementById("calcDisplay").value = "Error";
+        calc = "";
+      }
+    }
+
+    async function translateText() {
+      const text = document.getElementById("translateText").value.trim();
+      const pair = document.getElementById("langPair").value;
+      const result = document.getElementById("translationResult");
+
+      if (!text) {
+        result.textContent = "Avval matn yozing.";
+        return;
+      }
+
+      result.textContent = "Tarjima qilinmoqda...";
+
+      try {
+        const url =
+          "https://api.mymemory.translated.net/get?q=" +
+          encodeURIComponent(text) +
+          "&langpair=" +
+          encodeURIComponent(pair);
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.responseData && data.responseData.translatedText) {
+          result.textContent = data.responseData.translatedText;
+        } else {
+          result.textContent = "Tarjima topilmadi.";
+        }
+      } catch (error) {
+        result.textContent = "Internetni tekshirib qayta urinib ko‘ring.";
+      }
+    }
+  </script>
+
+</body>
+
+</html>
